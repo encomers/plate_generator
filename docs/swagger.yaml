@@ -1,0 +1,50 @@
+basePath: /
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: API description
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: License Plate Generator API
+  version: 1.0.0
+paths:
+  /next:
+    get:
+      description: Возвращает следующий сгенерированный номерной знак
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: У 123 ТЕ 116 RUS
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Получить следующий номер
+      tags:
+      - plates
+  /random:
+    get:
+      description: Возвращает случайный номерной знак
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: X 789 УА 116 RUS
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Получить случайный номер
+      tags:
+      - plates
+swagger: "2.0"

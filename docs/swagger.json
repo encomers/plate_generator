@@ -1,0 +1,74 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API description",
+        "title": "License Plate Generator API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/next": {
+            "get": {
+                "description": "Возвращает следующий сгенерированный номерной знак",
+                "produces": [
+                    "text/plain"
+                ],
+                "tags": [
+                    "plates"
+                ],
+                "summary": "Получить следующий номер",
+                "responses": {
+                    "200": {
+                        "description": "У 123 ТЕ 116 RUS",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/random": {
+            "get": {
+                "description": "Возвращает случайный номерной знак",
+                "produces": [
+                    "text/plain"
+                ],
+                "tags": [
+                    "plates"
+                ],
+                "summary": "Получить случайный номер",
+                "responses": {
+                    "200": {
+                        "description": "X 789 УА 116 RUS",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
