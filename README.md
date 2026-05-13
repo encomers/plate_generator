@@ -200,19 +200,22 @@ go test ./internal/domain/services/generator/...
 ```
 .
 ├── cmd/
-│   └── main.go              # Точка входа
+│   └── generator/              # Точка входа
+│       └── main.go              # Точка входа
 ├── internal/
 │   ├── domain/
 │   │   ├── valueObjects/    # Модели: Plate, NumberPart, LetterPart, RegionPart
 │   │   └── services/
 │   │       ├── generator/   # Интерфейсы и реализации генераторов
 │   │       └── repository/  # Интерфейс репозитория
-│   ├── delivery/
+│   ├── api/
 │   │   ├── http/
-│   │   │   ├── server.go    # Настройка Gin-сервера
-│   │   │   └── endpoints.go # Обработчики HTTP-запросов
+│           └── server/  # Интерфейс репозитория
+│   │   │       └── server.go    # Настройка Gin-сервера
+│           └── encpoints/  # Интерфейс репозитория
+│   │   │       └── endpoints.go # Обработчики HTTP-запросов
 │   │   └── realizations/    # MemoryRepository
-│   └── config/              # Конфигурация (опционально)
+│   └── endpoint/            # Инициализация системы и логгера
 ├── docs/                    # Swagger-документация (генерируется)
 ├── go.mod
 ├── go.sum
@@ -224,6 +227,5 @@ go test ./internal/domain/services/generator/...
 ## ⚠️ Ограничения и заметки
 
 - `MemoryRepository` хранит данные только в памяти — при перезапуске данные теряются. Для продакшена реализуйте PostgreSQL/Redis-репозиторий.
-- `StaticRegionGenerator` возвращает один регион. Для поддержки нескольких регионов создайте `DynamicRegionGenerator`.
 - При достижении лимита комбинаций (`overflow`) генератор вернёт ошибку `no more plates available`.
 - Все генераторы потокобезопасны благодаря `sync.Mutex`.
